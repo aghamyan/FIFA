@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ─── Design tokens ────────────────────────────────────────────────────────── */
+@theme inline {
+  --color-navy-950: #04071a;
+  --color-navy-900: #070c26;
+  --color-navy-800: #0d1440;
+  --color-navy-700: #141d5c;
+  --color-navy-600: #1e2a7a;
+
+  --color-gold-400:    #f5c842;
+  --color-gold-500:    #e6b800;
+  --color-gold-600:    #c49b00;
+
+  --color-electric-500: #2d8cf0;
+  --color-electric-400: #4ba3f5;
+  --color-electric-600: #1a73d9;
+
+  --color-pitch-500:  #22a84a;
+  --color-pitch-600:  #1a8a3a;
+
+  --color-surface:    #070c26;
+  --color-border:     rgba(255,255,255,0.08);
+
+  --color-text-primary:   #f0f2fa;
+  --color-text-secondary: #8892b0;
+  --color-text-muted:     #4a5280;
+
+  --color-success: #22a84a;
+  --color-warning: #f5a623;
+  --color-error:   #e53e3e;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background-color: #04071a;
+  color: #f0f2fa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #070c26; }
+::-webkit-scrollbar-thumb { background: #141d5c; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #1e2a7a; }
+
+/* ─── Focus ─────────────────────────────────────────────────────────────────── */
+:focus-visible { outline: 2px solid #2d8cf0; outline-offset: 2px; }
+
+/* ─── Card surfaces ──────────────────────────────────────────────────────────── */
+.card       { background-color: #070c26; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+.card-inner { background-color: #0d1440; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+
+/* ─── Buttons ────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-weight: 600; padding: 0.625rem 1.25rem; border-radius: 8px;
+  border: none; cursor: pointer; transition: all 150ms;
+  text-decoration: none; white-space: nowrap; font-size: 0.9375rem;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+.btn-primary { background-color: #2d8cf0; color: #fff; }
+.btn-primary:hover { background-color: #1a73d9; }
+
+.btn-gold {
+  background: linear-gradient(135deg, #f5c842, #c49b00);
+  color: #04071a;
+}
+.btn-gold:hover { opacity: 0.9; }
+
+.btn-ghost { background: transparent; color: #8892b0; border: 1px solid rgba(255,255,255,0.08); }
+.btn-ghost:hover { background-color: #0d1440; color: #f0f2fa; }
+
+.btn-danger { background: transparent; color: #e53e3e; border: 1px solid #e53e3e; }
+.btn-danger:hover { background-color: #e53e3e; color: #fff; }
+
+.btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+.btn-lg { padding: 0.75rem 1.5rem; font-size: 1rem; }
+.btn-full { width: 100%; }
+
+/* ─── Form controls ──────────────────────────────────────────────────────────── */
+.input-field {
+  background-color: #0d1440; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; color: #f0f2fa;
+  padding: 0.625rem 0.875rem; width: 100%;
+  font-size: 0.9375rem; transition: border-color 150ms;
+}
+.input-field::placeholder { color: #4a5280; }
+.input-field:focus { outline: none; border-color: #2d8cf0; }
+
+.select-field {
+  background-color: #0d1440; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; color: #f0f2fa;
+  padding: 0.625rem 0.875rem; width: 100%;
+  font-size: 0.9375rem; transition: border-color 150ms;
+  appearance: none;
+}
+.select-field:focus { outline: none; border-color: #2d8cf0; }
+
+.textarea-field {
+  background-color: #0d1440; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; color: #f0f2fa;
+  padding: 0.625rem 0.875rem; width: 100%; resize: vertical;
+  font-size: 0.9375rem; font-family: inherit; transition: border-color 150ms;
+  min-height: 100px;
+}
+.textarea-field::placeholder { color: #4a5280; }
+.textarea-field:focus { outline: none; border-color: #2d8cf0; }
+
+.label {
+  font-size: 0.8125rem; font-weight: 600;
+  color: #8892b0; letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+.form-error { font-size: 0.8125rem; color: #e53e3e; }
+.form-hint  { font-size: 0.8125rem; color: #4a5280; }
+
+/* ─── Badges ─────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 0.15rem 0.55rem; border-radius: 99px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+}
+.badge-gold    { background: rgba(230,184,0,0.12); color: #f5c842; border: 1px solid rgba(230,184,0,0.25); }
+.badge-blue    { background: rgba(45,140,240,0.12); color: #4ba3f5; border: 1px solid rgba(45,140,240,0.25); }
+.badge-green   { background: rgba(34,168,74,0.12);  color: #22a84a; border: 1px solid rgba(34,168,74,0.25); }
+.badge-gray    { background: rgba(255,255,255,0.06); color: #8892b0; border: 1px solid rgba(255,255,255,0.08); }
+.badge-red     { background: rgba(229,62,62,0.12);  color: #e53e3e; border: 1px solid rgba(229,62,62,0.25); }
+.badge-orange  { background: rgba(245,166,35,0.12); color: #f5a623; border: 1px solid rgba(245,166,35,0.25); }
+
+/* ─── Typography helpers ─────────────────────────────────────────────────────── */
+.page-title    { font-size: 1.5rem; font-weight: 700; color: #f0f2fa; letter-spacing: -0.02em; }
+.section-title { font-size: 0.8125rem; font-weight: 600; color: #8892b0; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ─── Divider ────────────────────────────────────────────────────────────────── */
+.divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0; }
+
+/* ─── Empty state ────────────────────────────────────────────────────────────── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 0.75rem;
+  padding: 3rem 1.5rem; text-align: center;
+  color: #4a5280;
+}
+.empty-state-icon { font-size: 2.5rem; opacity: 0.4; }
+
+/* ─── Skeleton loader ────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #0d1440 25%, #141d5c 50%, #0d1440 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
